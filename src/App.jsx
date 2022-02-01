@@ -9,7 +9,6 @@ function App() {
       <header className="App-header">
         <Header />
       </header>
-      <Mainboard />
       <Keyboard />
     </div>
   );
