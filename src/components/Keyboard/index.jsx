@@ -1,23 +1,24 @@
 const keyboardLayout = ["qwertyuiop", "asdfghjkl", "+zxcvbnm-"];
 
-const decomposeLineToButton = (line) => {
-  return;
+export const Key = (props) => {
+  return <button>{props.value}</button>;
+};
+
+const renderKey = (value) => {
+  let convertedValue = value;
+  if (value === "+") convertedValue = "Enter";
+  if (value === "-") convertedValue = "Del";
+  return <Key value={convertedValue} />;
 };
 
 const Keyboard = () => {
   return (
-    <div className="keyboard">
+    <div className="Keyboard">
       {keyboardLayout.map((line) => {
         return (
-          <div className="key">
+          <div className="Key">
             {line.split("").map((letter) => {
-              if (letter === "+") {
-                return <button>Enter</button>;
-              } else if (letter === "-") {
-                return <button>Del</button>;
-              } else {
-                return <button>{letter}</button>;
-              }
+              return renderKey(letter);
             })}
           </div>
         );
