@@ -22,7 +22,9 @@ const Game = () => {
     const { guesses, curRow } = gameState;
     const guess = guesses[curRow];
     const newGuesses = guesses.slice();
-    if (guess.length >= 5) {
+    if (letter === "Del") {
+      newGuesses[curRow] = guess.slice(0, Math.max(0, guess.length - 1));
+    } else if (guess.length >= 5) {
       newGuesses[curRow] = guess.slice(0, 5);
     } else {
       newGuesses[curRow] = guess + letter;
