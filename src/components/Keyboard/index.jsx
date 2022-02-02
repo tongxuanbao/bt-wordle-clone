@@ -1,8 +1,18 @@
+import { useContext } from "react";
+import { gameContext } from "components/Game";
+
 const keyboardLayout = ["qwertyuiop", "asdfghjkl", "+zxcvbnm-"];
 
 export const Key = (props) => {
+  const [_, addLetter] = useContext(gameContext);
   return (
-    <button className="Key" onClick={props.onClick}>
+    <button
+      className="Key"
+      onClick={() => {
+        console.log("clicked");
+        addLetter(props.letter);
+      }}
+    >
       {props.letter}
     </button>
   );
@@ -12,9 +22,7 @@ const renderKey = (props) => {
   let convertedLetter = props.letter;
   if (props.letter === "+") convertedLetter = "Enter";
   if (props.letter === "-") convertedLetter = "Del";
-  return (
-    <Key letter={convertedLetter} onClick={() => props.onClick(props.letter)} />
-  );
+  return <Key letter={convertedLetter} />;
 };
 
 const Keyboard = (props) => {

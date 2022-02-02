@@ -1,4 +1,5 @@
-// const gameState = ["l", "la", "las", "lase", "laser"];
+import { useContext } from "react";
+import { gameContext } from "components/Game";
 
 export const Panel = (props) => {
   return <div className="Panel">{props.value}</div>;
@@ -16,10 +17,11 @@ const renderRow = (row) => {
   );
 };
 
-const Mainboard = (props) => {
+const Mainboard = () => {
+  const [{ guesses, curRow }, addLetter] = useContext(gameContext);
   return (
     <div className="Mainboard">
-      {props.gameState.map((row) => renderRow(row.padEnd(5)))}
+      {guesses.map((row) => renderRow(row.padEnd(5)))}
     </div>
   );
 };
