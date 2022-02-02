@@ -1,4 +1,4 @@
-const gameState = ["l", "la", "las", "lase", "laser"];
+// const gameState = ["l", "la", "las", "lase", "laser"];
 
 export const Panel = (props) => {
   return <div className="Panel">{props.value}</div>;
@@ -16,10 +16,10 @@ const renderRow = (row) => {
   );
 };
 
-const Mainboard = () => {
+const Mainboard = (props) => {
   return (
     <div className="Mainboard">
-      {gameState.map((row) => renderRow(row.padEnd(5)))}
+      {props.gameState.map((row) => renderRow(row.padEnd(5)))}
     </div>
   );
 };
