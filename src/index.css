@@ -38,6 +38,20 @@ code {
 
 .right-panel {
   background: greenyellow;
+  border: 2px solid greenyellow;
+  color: #fff;
+}
+
+.wrong-panel {
+  background: gray;
+  border: 2px solid gray;
+  color: #fff;
+}
+
+.close-panel {
+  background: gold;
+  border: 2px solid gold;
+  color: #fff;
 }
 
 .board-row:after {
