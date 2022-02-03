@@ -45,6 +45,7 @@ const Game = () => {
       })
       .join("");
     setGameState({ guesses: guesses, status: status, curRow: curRow + 1 });
+    if (status[curRow] === "rrrrr") console.log("you won");
   };
 
   return (

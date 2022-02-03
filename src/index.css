@@ -17,6 +17,16 @@ code {
   place-items: center;
 }
 
+.Keyboard {
+  display: grid;
+  place-items: center;
+}
+
+.Game {
+  display: grid;
+  place-items: center;
+}
+
 .Header {
   display: flex;
 }

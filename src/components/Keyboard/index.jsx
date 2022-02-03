@@ -20,7 +20,7 @@ const renderKey = ({ letter, onClick }) => {
   let convertedLetter = letter;
   if (letter === "+") convertedLetter = "Enter";
   if (letter === "-") convertedLetter = "Del";
-  return <Key letter={convertedLetter} onClick={onClick} />;
+  return <Key letter={convertedLetter} onClick={onClick} key={letter} />;
 };
 
 const Keyboard = ({ onClick }) => {
