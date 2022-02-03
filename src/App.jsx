@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import Header from "components/Header";
 import Game from "components/Game";
+import ResultModal from "components/Modals/ResultModal";
+import { useState } from "react";
 
 import { initializeApp, getAnalytics } from "firebase/app";
 import "firebase/firestore";
@@ -24,10 +26,12 @@ const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 
 const App = () => {
+  const [resultModal, setResultModal] = useState(false);
   return (
     <div className="App">
       <Header />
-      <Game />
+      <Game openResultModal={setResultModal} />
+      {resultModal && <ResultModal closeResultModal={setResultModal} />}
     </div>
   );
 };

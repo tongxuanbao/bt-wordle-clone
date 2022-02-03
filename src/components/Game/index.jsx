@@ -2,7 +2,7 @@ import Keyboard from "components/Keyboard";
 import Mainboard from "components/Mainboard";
 import { useState, createContext } from "react";
 
-const Game = () => {
+const Game = ({ openResultModal }) => {
   const [gameState, setGameState] = useState({
     guesses: ["", "", "", "", "", ""],
     status: ["ddddd", "ddddd", "ddddd", "ddddd", "ddddd", "ddddd"], //default, right, wrong, close
@@ -45,7 +45,7 @@ const Game = () => {
       })
       .join("");
     setGameState({ guesses: guesses, status: status, curRow: curRow + 1 });
-    if (status[curRow] === "rrrrr") console.log("you won");
+    if (status[curRow] === "rrrrr") openResultModal(true);
   };
 
   return (
