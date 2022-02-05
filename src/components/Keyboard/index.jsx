@@ -24,7 +24,7 @@ const renderKey = ({ letter, onClick }) => {
   return <Key letter={convertedLetter} onClick={onClick} key={letter} />;
 };
 
-const Keyboard = ({ onClick }) => {
+const Keyboard = ({ onClick, keyStatus }) => {
   return (
     <div className="Keyboard">
       {keyboardLayout.map((line) => {

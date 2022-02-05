@@ -15,7 +15,7 @@ const ResultModal = ({ openResultModal, answer }) => {
           <p>Do you want to continue or share your result?</p>
         </div>
         <div className="footer">
-          <button>Play Again</button>
+          <button onClick={() => openResultModal(false)}>Play Again</button>
           <button>Share</button>
         </div>
       </div>

@@ -1,23 +1,27 @@
 .modalBackground {
-  width: 100vw;
-  height: 100vw;
-  background-color: darkgray;
-  position: fixed;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modalContainer {
-  width: 250px;
+  width: auto;
   height: auto;
   min-height: 250px;
+  min-width: 250px;
   border-radius: 12px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px;
   display: flex;
   flex-direction: column;
   padding: 25px;
+  padding-top: 15px;
 }
 
 .modalContainer .title {
@@ -48,7 +52,7 @@
   background-color: cornflowerblue;
   color: white;
   border-radius: 8px;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -62,4 +66,24 @@
   border: none;
   font-size: large;
   cursor: pointer;
+}
+
+.modalContainer .body .example {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.modalContainer .body .example-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+
+.modalBackground .body .example-row img {
+  height: 80px;
+  width: 80px;
+  margin: 10px;
 }

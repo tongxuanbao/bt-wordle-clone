@@ -1,5 +1,6 @@
 import Keyboard from "components/Keyboard";
 import Mainboard from "components/Mainboard";
+import NotAWord from "components/Modals/NotAWord";
 import { useState, useEffect } from "react";
 import "styles/Game.css";
 
@@ -9,8 +10,13 @@ const initialState = {
   curRow: 0,
 };
 
-const Game = ({ openResultModal, answer }) => {
-  const [gameState, setGameState] = useState({ ...initialState });
+const Game = ({ openResultModal, answer, validWords }) => {
+  const resetState = () => {
+    return JSON.parse(JSON.stringify(initialState));
+  };
+
+  const [gameState, setGameState] = useState(resetState());
+  const [notAWord, setNotAWord] = useState(false);
 
   const handleClick = (letter) => {
     const { guesses, status, curRow } = gameState;
@@ -30,10 +36,20 @@ const Game = ({ openResultModal, answer }) => {
     setGameState({ guesses: newGuesses, status: status, curRow: curRow });
   };
 
+  const checkGuess = (word) => {
+    validWords.forEach((validWord) => {
+      if (word === validWord) return true;
+    });
+    return false;
+  };
+
   const handleSubmit = () => {
     const { guesses, status, curRow } = gameState;
     const guess = guesses[curRow];
-
+    if (!checkGuess(guess)) {
+      setNotAWord(true);
+      return;
+    }
     status[curRow] = guess
       .split("")
       .map((guessLetter, guessIndex) => {
@@ -47,16 +63,21 @@ const Game = ({ openResultModal, answer }) => {
       })
       .join("");
     setGameState({ guesses: guesses, status: status, curRow: curRow + 1 });
-    if (status[curRow] === "rrrrr") {
-      openResultModal(true);
-      setGameState({ ...initialState });
-    }
   };
+
+  useEffect(() => {
+    const { status, curRow } = gameState;
+    if (status[curRow - 1] === "rrrrr" || curRow >= 6) {
+      openResultModal(true);
+      setGameState(resetState());
+    }
+  }, [gameState.curRow]);
 
   return (
     <div className="Game">
       <Mainboard gameState={gameState} answer={answer} />
       <Keyboard onClick={handleClick} />
+      {notAWord && <NotAWord openNotAWord={setNotAWord} />}
     </div>
   );
 };

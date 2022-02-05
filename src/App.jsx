@@ -3,12 +3,13 @@ import Header from "components/Header";
 import Game from "components/Game";
 import ResultModal from "components/Modals/ResultModal";
 import RuleModal from "components/Modals/RuleModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { initializeApp, getAnalytics } from "firebase/app";
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc } from "firebase/firestore";
 import "firebase/firestore";
 
-import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useDocumentOnce } from "react-firebase-hooks/firestore";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -26,18 +27,41 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 
+const getRandomInt = (max) => {
+  return Math.floor(Math.random() * max);
+};
+
 const App = () => {
+  const docRef = doc(getFirestore(app), "words", "0NpBTT1jGKuZtNVpP8PO");
+  const [value, loading, error] = useDocumentOnce(docRef);
+
   const [resultModal, setResultModal] = useState(false);
   const [ruleModal, setRuleModal] = useState(false);
-  const [answer, setAnswer] = useState("words");
+  const [answer, setAnswer] = useState();
+
+  useEffect(() => {
+    if (value != undefined) {
+      const words = value.data().words;
+      setAnswer(words[getRandomInt(words.length)]);
+    }
+  }, [value]);
+
   return (
     <div className="App">
-      <Header openRuleModal={setRuleModal} />
-      <Game openResultModal={setResultModal} answer={answer} />
-      {resultModal && (
-        <ResultModal openResultModal={setResultModal} answer={answer} />
+      {value && (
+        <>
+          <Header openRuleModal={setRuleModal} />
+          <Game
+            openResultModal={setResultModal}
+            answer={answer}
+            validWords={value.data().guessWords}
+          />
+          {resultModal && (
+            <ResultModal openResultModal={setResultModal} answer={answer} />
+          )}
+          {ruleModal && <RuleModal openRuleModal={setRuleModal} />}
+        </>
       )}
-      {ruleModal && <RuleModal openRuleModal={setRuleModal} />}
     </div>
   );
 };

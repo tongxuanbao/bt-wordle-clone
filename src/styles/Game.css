@@ -23,19 +23,19 @@
 }
 
 .right-panel {
-  background: greenyellow;
+  background: #adff2f;
   border: 2px solid greenyellow;
   color: #fff;
 }
 
 .wrong-panel {
-  background: gray;
+  background: #808080;
   border: 2px solid gray;
   color: #fff;
 }
 
 .close-panel {
-  background: gold;
+  background: #ffd900;
   border: 2px solid gold;
   color: #fff;
 }
