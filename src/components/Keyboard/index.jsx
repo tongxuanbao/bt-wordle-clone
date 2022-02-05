@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { gameContext } from "components/Game";
+import "styles/Keyboard.css";
 
 const keyboardLayout = ["qwertyuiop", "asdfghjkl", "+zxcvbnm-"];
 

@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import Header from "components/Header";
 import Game from "components/Game";
 import ResultModal from "components/Modals/ResultModal";
+import RuleModal from "components/Modals/RuleModal";
 import { useState } from "react";
 
 import { initializeApp, getAnalytics } from "firebase/app";
@@ -27,11 +28,16 @@ const app = initializeApp(firebaseConfig);
 
 const App = () => {
   const [resultModal, setResultModal] = useState(false);
+  const [ruleModal, setRuleModal] = useState(false);
+  const [answer, setAnswer] = useState("words");
   return (
     <div className="App">
-      <Header />
-      <Game openResultModal={setResultModal} />
-      {resultModal && <ResultModal closeResultModal={setResultModal} />}
+      <Header openRuleModal={setRuleModal} />
+      <Game openResultModal={setResultModal} answer={answer} />
+      {resultModal && (
+        <ResultModal openResultModal={setResultModal} answer={answer} />
+      )}
+      {ruleModal && <RuleModal openRuleModal={setRuleModal} />}
     </div>
   );
 };

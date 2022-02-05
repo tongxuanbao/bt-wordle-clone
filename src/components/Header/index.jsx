@@ -1,7 +1,7 @@
-const Header = () => {
+const Header = ({ openRuleModal }) => {
   return (
     <header className="Header">
-      <button> rules</button>
+      <button onClick={() => openRuleModal(true)}> rules</button>
       <h1>WORDLE CLONEE</h1>
       <button>settings</button>
     </header>

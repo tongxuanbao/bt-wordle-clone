@@ -1,15 +1,16 @@
 import Keyboard from "components/Keyboard";
 import Mainboard from "components/Mainboard";
-import { useState, createContext } from "react";
+import { useState, useEffect } from "react";
+import "styles/Game.css";
 
-const Game = ({ openResultModal }) => {
-  const [gameState, setGameState] = useState({
-    guesses: ["", "", "", "", "", ""],
-    status: ["ddddd", "ddddd", "ddddd", "ddddd", "ddddd", "ddddd"], //default, right, wrong, close
-    curRow: 0,
-  });
+const initialState = {
+  guesses: ["", "", "", "", "", ""],
+  status: ["ddddd", "ddddd", "ddddd", "ddddd", "ddddd", "ddddd"], //default, right, wrong, close
+  curRow: 0,
+};
 
-  const [answer, setAnswer] = useState("laser");
+const Game = ({ openResultModal, answer }) => {
+  const [gameState, setGameState] = useState({ ...initialState });
 
   const handleClick = (letter) => {
     const { guesses, status, curRow } = gameState;
@@ -32,6 +33,7 @@ const Game = ({ openResultModal }) => {
   const handleSubmit = () => {
     const { guesses, status, curRow } = gameState;
     const guess = guesses[curRow];
+
     status[curRow] = guess
       .split("")
       .map((guessLetter, guessIndex) => {
@@ -45,7 +47,10 @@ const Game = ({ openResultModal }) => {
       })
       .join("");
     setGameState({ guesses: guesses, status: status, curRow: curRow + 1 });
-    if (status[curRow] === "rrrrr") openResultModal(true);
+    if (status[curRow] === "rrrrr") {
+      openResultModal(true);
+      setGameState({ ...initialState });
+    }
   };
 
   return (
