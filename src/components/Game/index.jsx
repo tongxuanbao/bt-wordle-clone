@@ -1,6 +1,4 @@
-import Keyboard from "components/Keyboard";
-import Mainboard from "components/Mainboard";
-import NotAWord from "components/Modals/NotAWord";
+import GameView from "./GameView";
 import { useState, useEffect } from "react";
 import "styles/Game.css";
 
@@ -73,13 +71,7 @@ const Game = ({ openResultModal, answer, validWords }) => {
     }
   }, [gameState.curRow]);
 
-  return (
-    <div className="Game">
-      <Mainboard gameState={gameState} answer={answer} />
-      <Keyboard onClick={handleClick} />
-      {notAWord && <NotAWord openNotAWord={setNotAWord} />}
-    </div>
-  );
+  return <GameView />;
 };
 
 export default Game;
