@@ -92,7 +92,7 @@ const Game = ({ openResultModal, answer, validWords, resetGame }) => {
         let pos = -1;
         let stat = "w";
         while ((pos = answer.indexOf(letter, pos + 1)) != -1) {
-          if (stat === "r") return;
+          if (stat === "r") break;
           if (pos === index) stat = "r";
           else stat = "c";
         }

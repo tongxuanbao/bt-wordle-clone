@@ -36,7 +36,7 @@ const App = () => {
 
   const [resultModal, setResultModal] = useState(false);
   const [ruleModal, setRuleModal] = useState(false);
-  const [answer, setAnswer] = useState();
+  const [answer, setAnswer] = useState("booby");
 
   function resetGame() {
     console.log("Game will be reseted");
@@ -45,7 +45,7 @@ const App = () => {
   useEffect(() => {
     if (value != undefined) {
       const words = value.data().words;
-      setAnswer(words[getRandomInt(words.length)]);
+      // setAnswer(words[getRandomInt(words.length)]);
     }
   }, [value]);
 
