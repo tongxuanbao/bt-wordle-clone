@@ -4,4 +4,5 @@
 
 ### Todo
 
-- [ ] Server-side answer process or encrypt answer
+- [ ] Server-side answer process or encrypt answer.
+- [ ] Create darkmode.
