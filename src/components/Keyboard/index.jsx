@@ -10,7 +10,7 @@ export const Key = ({ letter, onClick, status }) => {
         onClick(letter);
       }}
     >
-      {letter}
+      {letter.toUpperCase()}
     </button>
   );
 };
@@ -18,7 +18,7 @@ export const Key = ({ letter, onClick, status }) => {
 const renderKey = ({ letter, onClick, status }) => {
   let convertedLetter = letter;
   if (letter === "+") convertedLetter = "Enter";
-  if (letter === "-") convertedLetter = "Del";
+  else if (letter === "-") convertedLetter = "Del";
   let stat = "";
   if (status === "w") stat = "wrong-key";
   if (status === "r") stat = "right-key";

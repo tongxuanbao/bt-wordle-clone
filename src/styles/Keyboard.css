@@ -1,6 +1,20 @@
 .Keyboard {
   display: grid;
   place-items: center;
+  margin: 10px;
+}
+
+.Key {
+  width: auto;
+  height: 45px;
+  min-width: 25px;
+  margin: 2px;
+  border: none;
+  background-color: lightgray;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .right-key {

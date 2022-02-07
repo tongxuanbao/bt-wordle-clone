@@ -1,0 +1,12 @@
+.Header button {
+  background: white;
+  border: none;
+  font-size: 30px;
+  color: darkgray;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.Header h1 {
+  font-size: 40px;
+}
