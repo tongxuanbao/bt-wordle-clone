@@ -17,7 +17,7 @@ const initialKeyState = {
   keyStatus: ["dddddddddd", "ddddddddd", "ddddddddd"],
 };
 
-const Game = ({ openResultModal, answer, validWords, resetGame }) => {
+const Game = ({ answer, validWords, resetGame }) => {
   // Core game state
   const [gameState, setGameState] = useState(
     JSON.parse(JSON.stringify(initialGameState))
