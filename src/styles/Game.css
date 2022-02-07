@@ -1,10 +1,18 @@
 .Game {
   display: grid;
   place-items: center;
+  margin-bottom: 20px;
 }
 
 .Header {
   display: flex;
+}
+
+.Mainboard {
+  display: grid;
+  place-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .Panel {

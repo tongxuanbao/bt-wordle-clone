@@ -9,6 +9,7 @@ import { getFirestore, doc } from "firebase/firestore";
 import "firebase/firestore";
 
 import { useDocumentOnce } from "react-firebase-hooks/firestore";
+import Footer from "components/Footer";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -67,6 +68,7 @@ const App = () => {
           {ruleModal && <RuleModal openRuleModal={setRuleModal} />}
         </>
       )}
+      <Footer />
     </div>
   );
 };

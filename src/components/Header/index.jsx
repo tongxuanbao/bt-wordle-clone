@@ -5,11 +5,11 @@ import { faQuestionCircle, faCog } from "@fortawesome/free-solid-svg-icons";
 const Header = ({ openRuleModal }) => {
   return (
     <header className="Header">
-      <button onClick={() => openRuleModal(true)}>
+      <button className="Rules" onClick={() => openRuleModal(true)}>
         <FontAwesomeIcon icon={faQuestionCircle} />
       </button>
       <h1>WORDLE CLONE</h1>
-      <button>
+      <button className="Settings">
         <FontAwesomeIcon icon={faCog} />
       </button>
     </header>

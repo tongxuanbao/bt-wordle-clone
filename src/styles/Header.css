@@ -8,5 +8,13 @@
 }
 
 .Header h1 {
-  font-size: 35px;
+  font-size: 30px;
+}
+
+.Header .Rules {
+  margin-right: 40px;
+}
+
+.Header .Settings {
+  margin-left: 40px;
 }
