@@ -15,7 +15,14 @@ const ResultModal = ({ openResultModal, answer, resetGame }) => {
           <p>Do you want to continue or share your result?</p>
         </div>
         <div className="footer">
-          <button onClick={() => resetGame()}>Play Again</button>
+          <button
+            onClick={() => {
+              resetGame();
+              openResultModal(false);
+            }}
+          >
+            Play Again
+          </button>
           <button>Share</button>
         </div>
       </div>
