@@ -26,7 +26,6 @@ yarn-error.log*
 .firebaserc
 .vscode
 .idea
-/public
 database-debug.log
 firebase-debug.log
 package-lock.json
