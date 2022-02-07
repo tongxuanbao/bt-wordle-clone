@@ -17,7 +17,7 @@ const initialKeyState = {
   keyStatus: ["dddddddddd", "ddddddddd", "ddddddddd"],
 };
 
-const Game = ({ answer, validWords, resetGame }) => {
+const Game = ({ answer, validWords, resetGame, allAnswer }) => {
   // Core game state
   const [gameState, setGameState] = useState(
     JSON.parse(JSON.stringify(initialGameState))
@@ -106,7 +106,7 @@ const Game = ({ answer, validWords, resetGame }) => {
       return newStatus;
     }
 
-    if (!validWords.includes(guess) && answer != guess) {
+    if (!validWords.includes(guess) && !allAnswer.includes(guess)) {
       setNotAWord(true);
       return;
     }

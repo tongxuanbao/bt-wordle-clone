@@ -61,6 +61,7 @@ const App = () => {
             openResultModal={setResultModal}
             answer={answer}
             validWords={value.data().guessWords}
+            allAnswer={value.data().words}
             resetGame={resetGame}
           />
           {ruleModal && <RuleModal openRuleModal={setRuleModal} />}
