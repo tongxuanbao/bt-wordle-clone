@@ -1,5 +1,7 @@
 # Clone Wordle using React/Firebase
 
-Live demo of this project at [https://bt-wordle-clone.web.app](https://bt-wordle-clone.web.app)
+### Live demo of this project at [https://bt-wordle-clone.web.app](https://bt-wordle-clone.web.app)
 
+### Todo
 
+- [ ] Server-side answer process or encrypt answer
