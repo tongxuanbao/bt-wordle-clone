@@ -1,7 +1,6 @@
 import logo from "./logo.svg";
 import Header from "components/Header";
 import Game from "components/Game";
-import ResultModal from "components/Modals/ResultModal";
 import RuleModal from "components/Modals/RuleModal";
 import { useEffect, useState } from "react";
 
@@ -39,6 +38,10 @@ const App = () => {
   const [ruleModal, setRuleModal] = useState(false);
   const [answer, setAnswer] = useState();
 
+  function resetGame() {
+    console.log("Game will be reseted");
+  }
+
   useEffect(() => {
     if (value != undefined) {
       const words = value.data().words;
@@ -55,10 +58,8 @@ const App = () => {
             openResultModal={setResultModal}
             answer={answer}
             validWords={value.data().guessWords}
+            resetGame={resetGame}
           />
-          {resultModal && (
-            <ResultModal openResultModal={setResultModal} answer={answer} />
-          )}
           {ruleModal && <RuleModal openRuleModal={setRuleModal} />}
         </>
       )}

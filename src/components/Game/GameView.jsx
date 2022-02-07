@@ -1,13 +1,12 @@
 import Keyboard from "components/Keyboard";
 import Mainboard from "components/Mainboard";
-import NotAWord from "components/Modals/NotAWord";
+import { useState } from "react";
 
-const GameView = ({}) => {
+const GameView = ({ gameState, keyState, answer, handleClick }) => {
   return (
     <div className="Game">
       <Mainboard gameState={gameState} answer={answer} />
-      <Keyboard onClick={handleClick} />
-      {notAWord && <NotAWord openNotAWord={setNotAWord} />}
+      <Keyboard keyState={keyState} handleClick={handleClick} />
     </div>
   );
 };

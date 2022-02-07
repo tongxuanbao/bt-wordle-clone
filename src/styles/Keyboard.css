@@ -2,3 +2,18 @@
   display: grid;
   place-items: center;
 }
+
+.right-key {
+  background: #adff2f;
+  color: #fff;
+}
+
+.wrong-key {
+  background: #808080;
+  color: #fff;
+}
+
+.close-key {
+  background: #ffd900;
+  color: #fff;
+}

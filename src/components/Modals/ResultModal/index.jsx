@@ -1,6 +1,6 @@
 import "styles/Modal.css";
 
-const ResultModal = ({ openResultModal, answer }) => {
+const ResultModal = ({ openResultModal, answer, resetGame }) => {
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -15,7 +15,7 @@ const ResultModal = ({ openResultModal, answer }) => {
           <p>Do you want to continue or share your result?</p>
         </div>
         <div className="footer">
-          <button onClick={() => openResultModal(false)}>Play Again</button>
+          <button onClick={() => resetGame()}>Play Again</button>
           <button>Share</button>
         </div>
       </div>

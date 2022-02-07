@@ -2,12 +2,10 @@ import { useContext } from "react";
 import { gameContext } from "components/Game";
 import "styles/Keyboard.css";
 
-const keyboardLayout = ["qwertyuiop", "asdfghjkl", "+zxcvbnm-"];
-
-export const Key = ({ letter, onClick }) => {
+export const Key = ({ letter, onClick, status }) => {
   return (
     <button
-      className="Key"
+      className={`Key ${status}`}
       onClick={() => {
         onClick(letter);
       }}
@@ -17,23 +15,37 @@ export const Key = ({ letter, onClick }) => {
   );
 };
 
-const renderKey = ({ letter, onClick }) => {
+const renderKey = ({ letter, onClick, status }) => {
   let convertedLetter = letter;
   if (letter === "+") convertedLetter = "Enter";
   if (letter === "-") convertedLetter = "Del";
-  return <Key letter={convertedLetter} onClick={onClick} key={letter} />;
+  let stat = "";
+  if (status === "w") stat = "wrong-key";
+  if (status === "r") stat = "right-key";
+  if (status === "c") stat = "close-key";
+  return (
+    <Key
+      letter={convertedLetter}
+      onClick={onClick}
+      status={stat}
+      key={letter}
+    />
+  );
 };
 
-const Keyboard = ({ onClick, keyStatus }) => {
+const Keyboard = ({ keyState, handleClick }) => {
+  const { keyRow, keyStatus } = keyState;
   return (
     <div className="Keyboard">
-      {keyboardLayout.map((line) => {
+      {keyRow.map((line, rowIndex) => {
+        const rowStatus = keyStatus[rowIndex];
         return (
           <div className="key-row">
-            {line.split("").map((letter) => {
+            {line.split("").map((letter, index) => {
               return renderKey({
                 letter: letter,
-                onClick: onClick,
+                onClick: handleClick,
+                status: rowStatus[index],
               });
             })}
           </div>
